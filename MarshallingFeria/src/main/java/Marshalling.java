@@ -40,7 +40,7 @@ public class Marshalling {
             System.out.println(xmlString);
 
         } catch (JAXBException e) {
-            e.printStackTrace();
+            System.err.println("No se encuentra nada que Serializar.");
         }
     }
 
@@ -62,7 +62,7 @@ public class Marshalling {
             System.out.println(usuarioFromXml.toString());
 
         } catch (JAXBException e) {
-            e.printStackTrace();
+            System.err.println("El archivo no existe.");
         }
     }
 
@@ -93,7 +93,7 @@ public class Marshalling {
                 System.out.println(casetaBuscada);
             }
         } catch (JAXBException e) {
-            e.printStackTrace();
+            System.err.println("El archivo de busqueda no existe.");
         }
     }
 
@@ -116,7 +116,7 @@ public class Marshalling {
             System.out.println(jsonString);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("No se encuentra nada que Serializar.");
         }
     }
 
@@ -136,7 +136,7 @@ public class Marshalling {
             System.out.println(usuarioFromXml.toString());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("El archivo no existe.");
         }
     }
 

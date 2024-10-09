@@ -75,7 +75,7 @@ public class casetaFeria {
                 ", titular='" + titular + '\'' +
                 ", aforo=" + aforo +
                 ", tipoCaseta='" + tipoCaseta + '\'' +
-                '}';
+                '}'+ "\n";
     }
 
     // Getters y setters
