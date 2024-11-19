@@ -34,7 +34,7 @@ public class DatabaseConnection {
         }
     }
 
-    // Método para obtener la conexión
+    // Metodo para obtener la conexión
     public static Connection getConnection() {
         return connection;
     }
