@@ -1,10 +1,22 @@
 package entidades;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement(name = "almazara")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "nombre", "ubicacion", "capacidad"})
 public class Almazara {
 
+    @XmlElement(name = "id")
     private int id;
+
+    @XmlElement(name = "nombre")
     private String nombre;
+
+    @XmlElement(name = "ubicacion")
     private String ubicacion;
+
+    @XmlElement(name = "capacidad")
     private double capacidad;
 
     //Constructor
@@ -21,6 +33,8 @@ public class Almazara {
         this.capacidad = capacidad;
     }
 
+    public Almazara() {
+    }
 
     //Getters y Setters
     public int getId() {
@@ -53,5 +67,15 @@ public class Almazara {
 
     public void setCapacidad(double capacidad) {
         this.capacidad = capacidad;
+    }
+
+    @Override
+    public String toString() {
+        return "Almazara{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", capacidad=" + capacidad +
+                '}';
     }
 }

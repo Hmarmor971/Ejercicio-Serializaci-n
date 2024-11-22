@@ -96,7 +96,7 @@ public class AlmazaraDAO {
 
     //Metodo que devuelve una lista de todas las Almazaras.
     public List<Almazara> getAllAlmazaras() {
-        String query = "SELECT * FROM Almazaras";
+        String query = "SELECT * FROM Almazara";
 
         List<Almazara> almazaras = new ArrayList<>();
 

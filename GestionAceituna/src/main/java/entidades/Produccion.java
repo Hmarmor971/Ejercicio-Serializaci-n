@@ -1,21 +1,40 @@
 package entidades;
 
+import servicios.LocalDateAdapter;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
+@XmlRootElement(name = "produccion")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "cuadrilla_id", "olivar_id", "almazara_id", "fecha", "cantidadRecolectada"})
 public class Produccion {
 
+    @XmlElement(name = "id")
     private int id;
+
+    @XmlElement(name = "cuadrilla_id")
     private int cuadrilla_id;
+
+    @XmlElement(name = "olivar_id")
     private int olivar_id;
-    private int almazada_id;
+
+    @XmlElement(name = "almazara_id")
+    private int almazara_id;
+
+    @XmlElement(name = "fecha")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fecha;
+
+    @XmlElement(name = "cantidadRecolectada")
     private double cantidadRecolectada;
 
     //Constructor
-    public Produccion(int cuadrilla_id, int olivar_id, int almazada_id, LocalDate fecha, double cantidadRecolectada) {
+    public Produccion(int cuadrilla_id, int olivar_id, int almazara_id, LocalDate fecha, double cantidadRecolectada) {
         this.cuadrilla_id = cuadrilla_id;
         this.olivar_id = olivar_id;
-        this.almazada_id = almazada_id;
+        this.almazara_id = almazara_id;
         this.fecha = fecha;
         this.cantidadRecolectada = cantidadRecolectada;
     }
@@ -24,9 +43,12 @@ public class Produccion {
         this.id = id;
         this.cuadrilla_id = cuadrilla_id;
         this.olivar_id = olivar_id;
-        this.almazada_id = almazada_id;
+        this.almazara_id = almazada_id;
         this.fecha = fecha;
         this.cantidadRecolectada = cantidadRecolectada;
+    }
+
+    public Produccion() {
     }
 
     //Getter y Setter
@@ -55,11 +77,11 @@ public class Produccion {
     }
 
     public int getAlmazada_id() {
-        return almazada_id;
+        return almazara_id;
     }
 
     public void setAlmazada_id(int almazada_id) {
-        this.almazada_id = almazada_id;
+        this.almazara_id = almazada_id;
     }
 
     public LocalDate getFecha() {
@@ -76,5 +98,17 @@ public class Produccion {
 
     public void setCantidadRecolectada(double cantidadRecolectada) {
         this.cantidadRecolectada = cantidadRecolectada;
+    }
+
+    @Override
+    public String toString() {
+        return "Produccion{" +
+                "id=" + id +
+                ", cuadrilla_id=" + cuadrilla_id +
+                ", olivar_id=" + olivar_id +
+                ", almazara_id=" + almazara_id +
+                ", fecha=" + fecha +
+                ", cantidadRecolectada=" + cantidadRecolectada +
+                '}';
     }
 }

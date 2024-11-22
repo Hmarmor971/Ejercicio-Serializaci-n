@@ -1,13 +1,27 @@
 package entidades;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@XmlRootElement(name = "olivar")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "ubicacion", "hectareas", "produccionAnual", "cuadrillas"})
 public class Olivar {
 
+    @XmlElement(name = "id")
     private int id;
+
+    @XmlElement(name = "ubicacion")
     private String ubicacion;
+
+    @XmlElement(name = "hectareas")
     private double hectareas;
+
+    @XmlElement(name = "produccionAnual")
     private double produccionAnual;
+
+    @XmlElementWrapper(name = "cuadrillas")
+    @XmlElement(name = "cuadrillas")
     private List<Cuadrilla> cuadrillas;
 
     //Constructores
@@ -26,6 +40,8 @@ public class Olivar {
         this.cuadrillas = cuadrillas;
     }
 
+    public Olivar() {
+    }
 
     //Getters y Setter
     public int getId() {
@@ -66,5 +82,16 @@ public class Olivar {
 
     public void setCuadrillas(List<Cuadrilla> cuadrillas) {
         this.cuadrillas = cuadrillas;
+    }
+
+    @Override
+    public String toString() {
+        return "Olivar{" +
+                "id=" + id +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", hectareas=" + hectareas +
+                ", produccionAnual=" + produccionAnual +
+                ", cuadrillas=" + cuadrillas +
+                '}';
     }
 }

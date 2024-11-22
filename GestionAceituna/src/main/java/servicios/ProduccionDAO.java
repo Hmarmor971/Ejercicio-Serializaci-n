@@ -88,7 +88,7 @@ public class ProduccionDAO {
                         rs.getInt("id"),
                         rs.getInt("cuadrilla_id"),
                         rs.getInt("olivar_id"),
-                        rs.getInt("almzara_id"),
+                        rs.getInt("almazara_id"),
                         rs.getDate("fecha").toLocalDate(),
                         rs.getDouble("cantidadRecolectada")
                 );
@@ -101,7 +101,7 @@ public class ProduccionDAO {
 
     //Metodo que devuelve una lista de las producciones
     public List<Produccion> getAllProduccion() {
-        String query = "SELECT * FROM Almazara";
+        String query = "SELECT * FROM Produccion";
         List<Produccion> producciones = new ArrayList<>();
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -112,7 +112,7 @@ public class ProduccionDAO {
                         rs.getInt("id"),
                         rs.getInt("cuadrilla_id"),
                         rs.getInt("olivar_id"),
-                        rs.getInt("almzara_id"),
+                        rs.getInt("almazara_id"),
                         rs.getDate("fecha").toLocalDate(),
                         rs.getDouble("cantidadRecolectada")
                 ));

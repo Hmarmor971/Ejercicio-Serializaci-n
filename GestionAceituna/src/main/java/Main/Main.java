@@ -1,10 +1,13 @@
 package Main;
 
+import Marshalling.JsonMarshalling;
+import Marshalling.JsonUnmarshalling;
+import Marshalling.XmlMarshalling;
+import Marshalling.XmlUnmarshalling;
+import conexion.DatabaseConnection;
 import entidades.*;
-import servicios.CuadrillaDAO;
-import servicios.OlivarDAO;
-import servicios.ProduccionDAO;
-import servicios.TabajadorDAO;
+import servicios.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -181,6 +184,43 @@ public class Main {
                         System.err.println("Error, datos proporcionados incorrectos o faltantes: " + e.getMessage());
                     }
                     break;
+                case 10:
+                    try {
+                        XmlMarshalling xmlMarshalling = new XmlMarshalling();
+                        xmlMarshalling.xmlMarshalling();
+                        System.out.println("Se ha creado el archivo XML");
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case 11:
+                    try {
+                        XmlUnmarshalling xmlUnmarshalling = new XmlUnmarshalling();
+                        xmlUnmarshalling.xmlUnmarshalling();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case 12:
+                    try {
+                        JsonMarshalling jsonMarshalling = new JsonMarshalling();
+                        jsonMarshalling.jsonMarshalling();
+                        System.out.println("Se ha creado el archivo JSON");
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case 13:
+                    try {
+                        JsonUnmarshalling jsonUnmarshalling = new JsonUnmarshalling();
+                        jsonUnmarshalling.jsonUnmarshalling();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case 14:
+                    DatabaseConnection.createTriggers();
+                    break;
                 case 0:
                     System.out.println("Saliendo...");
                     return;
@@ -191,8 +231,9 @@ public class Main {
     }
 
     private static void mostrarMenu() {
-        System.out.printf("""
-                \n\nSeleccione una opción:
+        System.out.print("""
+                \n
+                Seleccione una opción:
                 1. Mostrar los trabajadores de una determinada cuadrilla.
                 2. Mostrar las cuadrillas que supervisa un determinado trabajador.
                 3. Mostrar los olivares donde trabaja una determinada cuadrilla.
@@ -202,6 +243,11 @@ public class Main {
                 7. Mostrar la producción hasta una determinada fecha, de una determinada almazara.
                 8. Mostrar la producción hasta una determinada fecha, de un determinado olivar.
                 9. Mostrar la producción hasta una determinada fecha, de una cuadrilla determinada.
+                10. Serializar la base de datos a un archivo XML.
+                11. Deserializar la base de datos guardada en un archivo XML.
+                12. Serializar la base de datos a un archivo JSON.
+                13. Deserializar la base de datos guardada en un archivo JSON.
+                14. Crear trigger para que la produccion no pueda ingresar una cantidad negativa o 0.
                 0. Salir
                 Opción:\s""");
     }
